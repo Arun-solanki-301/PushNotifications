@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import messaging from '@react-native-firebase/messaging';
 
 
@@ -7,11 +7,16 @@ import {
   StyleSheet,
   Text,
 } from 'react-native';
+import Login from './Screens/Login';
+
+
+
 
 const App = () => {
+
   return (
     <SafeAreaView>
-      <Text>App</Text>
+      <Login />
     </SafeAreaView>
   );
 };
