@@ -5,18 +5,15 @@ const ButtonComponent = (props) => {
     console.log(props)
     return (
         <View>
-            <Pressable style={styles.container}>
-                <Text>{props.title}</Text>
+            <Pressable style={props.styless}>
+                <Text style={props.textStyle}>{props.title}</Text>
             </Pressable>
         </View>
     )
 }
 
 const styles = StyleSheet.create({
-    container : {
-        backgroundColor : 'blue',
-        padding : 15
-    }
+
 })
 
 export default ButtonComponent;
