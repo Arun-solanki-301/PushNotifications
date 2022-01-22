@@ -1,22 +1,20 @@
 import React, { useEffect } from 'react';
 import messaging from '@react-native-firebase/messaging';
-
-
 import {
   SafeAreaView,
 } from 'react-native';
-import Login from './Screens/Login';
-import SignUp from './Screens/SignUp';
-import AddPoll from './Screens/AddPollS';
+import ScreensContainer from './Src/Navigation/ScreensContainer';
+import store from './Src/Redux/store';
+import { Provider } from 'react-redux';
 
 const App = () => {
 
   return (
-    <SafeAreaView>
-      {/* <Login /> */}
-      {/* <SignUp /> */}
-      <AddPoll />
+    <Provider store={store}>
+    <SafeAreaView style={{flex :1}}>
+     <ScreensContainer />
     </SafeAreaView>
+    </Provider>
   );
 };
 export default App;

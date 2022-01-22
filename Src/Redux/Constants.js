@@ -1,0 +1,34 @@
+// LOGIN CONSTANTS
+export const LOGIN_REQUEST = "LOGIN_REQUEST";
+export const LOGIN_SUCCESS = "LOGIN_SUCCESS";
+export const LOGIN_ERROR = "LOGIN_ERROR";
+
+// SIGNUP CONSTANTS
+
+export const SIGNUP_REQUEST = "SIGNUP_REQUEST";
+export const SIGNUP_SUCCESS = "SIGNUP_SUCCESS";
+export const SIGNUP_ERROR= "SIGNUP_ERROR";
+
+// Profile lists CONSTANTS 
+
+export const PROFILE_REQUEST = "PROFILE_REQUEST";
+export const PROFILE_SUCCESS = "PROFILE_SUCCESS";
+export const PROFILE_ERROR= "PROFILE_ERROR";
+
+// Add poll Constants
+
+export const ADD_POLL_REQUEST = "ADD_POLL_REQUEST";
+export const ADD_POLL_SUCCESS = "ADD_POLL_SUCCESS";
+export const ADD_POLL_ERROR= "ADD_POLL_ERROR";
+
+// remove poll Constants
+
+export const REMOVE_POLL_REQUEST = "REMOVE_POLL_REQUEST";
+export const REMOVE_POLL_SUCCESS = "REMOVE_POLL_SUCCESS";
+export const REMOVE_POLL_ERROR= "REMOVE_POLL_ERROR";
+
+// All poll Constants
+
+export const ALL_POLL_REQUEST = "ALL_POLL_REQUEST";
+export const ALL_POLL_SUCCESS = "ALL_POLL_SUCCESS";
+export const ALL_POLL_ERROR= "ALL_POLL_ERROR";
