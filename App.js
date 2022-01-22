@@ -4,19 +4,18 @@ import messaging from '@react-native-firebase/messaging';
 
 import {
   SafeAreaView,
-  StyleSheet,
-  Text,
 } from 'react-native';
 import Login from './Screens/Login';
-
-
-
+import SignUp from './Screens/SignUp';
+import AddPoll from './Screens/AddPollS';
 
 const App = () => {
 
   return (
     <SafeAreaView>
-      <Login />
+      {/* <Login /> */}
+      {/* <SignUp /> */}
+      <AddPoll />
     </SafeAreaView>
   );
 };
