@@ -16,7 +16,7 @@ const Facebook = <Icon name="facebook" size={30} color="#fff" />
 const signinalt = <Icon name="sign-in" size={25} color="#fff" />
 
 
-const Login = () => {
+const Login = ({navigation}) => {
   const [userInfo , setUserInfo] = useState({
         username : "",
         password : "",
@@ -30,14 +30,15 @@ const Login = () => {
   }
  
   const data = useSelector(state => state);
-  console.log(data , userInfo)
   const dispatch = useDispatch();
-
-  const SignIn = () => {
+  
+  const SignInUser = (user , pass) => {
+    console.log(user , pass)
     dispatch(loginRequest({
-      name : userInfo.username,
-      pass : userInfo.password
-    }))
+      name : user,
+      password : pass,
+    })
+  );
   }
 
 
@@ -66,16 +67,16 @@ const Login = () => {
               <TextInput style={styles.Input} value={userInfo.password} onChangeText={(e)=>getUserInfo(e , "password")} />
 
             <View style={styles.SignInButtonContainer}>
-                <TouchableOpacity style={styles.SignInButton} onPress={SignIn}>
+                <TouchableOpacity style={styles.SignInButton} onPress={()=>SignInUser(userInfo.username , userInfo.password)}>
                   {signinalt}
                     <Text style={styles.SignInButtonText}>Sign In</Text>
                 </TouchableOpacity>
             </View>
 
           </View>
-          <View><TouchableOpacity><Text style={styles.SignupText}>Not a Mamber ? SignUp Now</Text></TouchableOpacity></View>
+          <View><TouchableOpacity onPress={()=>navigation.navigate('SignUp')}><Text style={styles.SignupText}>Not a Mamber ? SignUp Now</Text></TouchableOpacity></View>
           <View><Text style={styles.SignupText}>OR</Text></View>
-          <View><TouchableOpacity><Text style={styles.SignupText}>Sign in With mobile</Text></TouchableOpacity></View>
+          <View><TouchableOpacity onPress={()=>navigation.navigate('OtpScreen')}><Text style={styles.SignupText}>Sign in With mobile</Text></TouchableOpacity></View>
 
 
       </View>

@@ -1,31 +1,58 @@
-import React from 'react';
+import React, { useState } from 'react';
 import {View , Text , StyleSheet , TextInput , TouchableOpacity} from 'react-native';
 
 import Icon from 'react-native-vector-icons/FontAwesome';
+import { useDispatch, useSelector } from 'react-redux';
+import { addPollRequest } from '../Redux/Actions/Action';
 
 const PollIcon = <Icon name="plus-circle" size={25} color="#fff" />
 const AddPolls = () =>{
+    const [pollInfo , setPollInfo] = useState({
+        question : "",
+        option1 : "",
+        option2 : "",
+        option3 : "",
+        option4 : "",
+    })
+
+    const getPollInfo = (key , value) =>{
+        setPollInfo({
+            ...pollInfo,
+            [key] : value
+        })
+    }
+    const data = useSelector(state=>state);
+    const dispatch = useDispatch()
+
+    const addNewPoll = ()=>{
+        dispatch(addPollRequest(pollInfo))
+    }
+
+
+
+
+
     return(
         <View style={styles.container}>
             <Text style={styles.headerText}>Add Your Poll Here</Text>
             <View style={styles.InputContainer}>
               <Text style={styles.label}>Question :</Text>
-              <TextInput style={styles.Input} />
+              <TextInput style={styles.Input} onChangeText={(e)=>getPollInfo("question", e)} />
 
               <Text style={styles.label}>Option 1 :</Text>
-              <TextInput style={styles.Input} />
+              <TextInput style={styles.Input} onChangeText={(e)=>getPollInfo("option1", e)} />
 
               <Text style={styles.label}>Option 2 :</Text>
-              <TextInput style={styles.Input} />
+              <TextInput style={styles.Input} onChangeText={(e)=>getPollInfo("option2", e)} />
 
               <Text style={styles.label}>Option 3 :</Text>
-              <TextInput style={styles.Input} />
+              <TextInput style={styles.Input} onChangeText={(e)=>getPollInfo("option3", e)} />
 
               <Text style={styles.label}>Option 4 :</Text>
-              <TextInput style={styles.Input} />
+              <TextInput style={styles.Input} onChangeText={(e)=>getPollInfo("option4", e)} />
 
             <View style={styles.SignInButtonContainer}>
-                <TouchableOpacity style={styles.SignInButton}>
+                <TouchableOpacity style={styles.SignInButton} onPress={()=>addNewPoll()}>
                   {PollIcon}
                     <Text style={styles.SignInButtonText}>Add Poll</Text>
                 </TouchableOpacity>

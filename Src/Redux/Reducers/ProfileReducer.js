@@ -8,7 +8,6 @@ const InitialState = {
 };
 
 const ProfileReducer = (state = InitialState , action) => {
-    console.log(action)
     switch (action.type) {
       case constant.PROFILE_REQUEST:
         return {

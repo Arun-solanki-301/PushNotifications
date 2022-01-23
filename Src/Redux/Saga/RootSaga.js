@@ -1,33 +1,37 @@
-import * as action from '../Constants'
+import * as constant from '../Constants'
 import { fork, all, takeLatest } from "redux-saga/effects";
-import { LoginSaga } from './LoginSaga';
+import {LoginSaga} from './LoginSaga'
 import { SignUpSaga } from './SignUpSaga';
 import { AddPollSaga } from './AddPollSaga';
 import { AllPollSaga } from './AllPollSaga';
 import { RemovePollSaga } from './RemovePollSaga';
 import { ProfileSaga } from './ProfileSaga';
+// import {SubmitPollSaga} from './SubmitPollSaga'
 
 
 
 
 function* LoginRootSaga() {
-  yield takeLatest(action.LOGIN_REQUEST, LoginSaga);
+  yield takeLatest(constant.LOGIN_REQUEST, LoginSaga);
 }
 function* signUpRootSaga() {
-  yield takeLatest(action.SIGNUP_REQUEST, SignUpSaga);
+  yield takeLatest(constant.SIGNUP_REQUEST, SignUpSaga);
 }
 function* ProfileRootSaga() {
-  yield takeLatest(action.PROFILE_REQUEST, ProfileSaga);
+  yield takeLatest(constant.PROFILE_REQUEST, ProfileSaga);
 }
 function* AddPollRootSaga() {
-  yield takeLatest(action.LOGIN_REQUEST, AddPollSaga);
+  yield takeLatest(constant.ADD_POLL_REQUEST, AddPollSaga);
 }
 function* AllPollRootSaga() {
-  yield takeLatest(action.SIGNUP_REQUEST, AllPollSaga);
+  yield takeLatest(constant.ALL_POLL_REQUEST, AllPollSaga);
 }
 function* RemoveRootSaga() {
-  yield takeLatest(action.REMOVE_POLL_REQUEST, RemovePollSaga);
+  yield takeLatest(constant.REMOVE_POLL_REQUEST, RemovePollSaga);
 }
+// function* SubmitPollRootSaga() {
+//   yield takeLatest(constant.SUBMIT_POLL_REQUEST, SubmitPollSaga);
+// }
 
 
 

@@ -11,7 +11,6 @@ export function* ProfileSaga(action) {
   try {
     const response = yield call(axios.post, url);
     if (response) {
-      console.log(response)
       yield put(profileSuccess({ response: response }));
     } else {
       yield put(profileError({ error: "Invalid  details" }));

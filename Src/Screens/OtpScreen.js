@@ -9,7 +9,7 @@ import {
 } from 'react-native';
 
 
-function OtpScreen() {
+const OtpScreen = ({navigation}) => {
   const [otpGenrate, setOptGenrate] = useState(true)
 
   const Genrate = () => {
@@ -39,7 +39,7 @@ function OtpScreen() {
           </View>
         }
 
-        <View><TouchableOpacity><Text style={styles.SignupText}>Not a Mamber ? SignUp Now</Text></TouchableOpacity></View>
+        <View><TouchableOpacity onPress={()=>navigation.navigate('SignUp')}><Text style={styles.SignupText}>Not a Mamber ? SignUp Now</Text></TouchableOpacity></View>
 
       </View>
     </View>

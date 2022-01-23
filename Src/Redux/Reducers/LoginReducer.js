@@ -1,5 +1,6 @@
 import * as constant from '../Constants'
 
+
 const InitialState = {
   isLoading: false,
   isSuccess: false,
@@ -8,7 +9,7 @@ const InitialState = {
 };
 
 const LoginReducer = (state = InitialState , action) => {
-    console.log(action , "hiiiiiiiii")
+   
     switch (action.type) {
       case constant.LOGIN_REQUEST:
         return {
@@ -22,7 +23,7 @@ const LoginReducer = (state = InitialState , action) => {
           isLoading: false,
           isSuccess: true,
           isError: false,
-          ...action.payload.response.data
+          ...action.payload.response
         };
       case constant.LOGIN_ERROR:
         return {

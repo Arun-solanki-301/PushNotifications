@@ -8,11 +8,37 @@ import {
   View,
 } from 'react-native';
 import Icon from 'react-native-vector-icons/FontAwesome';
+import { useDispatch, useSelector } from 'react-redux';
+import { signUpRequest } from '../Redux/Actions/Action';
 
 const Userplus = <Icon name="user-plus" size={25} color="#fff" />
 
 
-function SignUp() {
+const SignUp = ({navigation}) => {
+  const [signUpInfo , setSignUpInfo] = useState({
+    username : "",
+    password : "",
+    confirmPassword : "",
+    role : ""
+  });
+
+  const data = useSelector(state => state);
+  const dispatch = useDispatch();
+
+
+  const userSignUpDetails = (key , value) => {
+    setSignUpInfo({
+      ...signUpInfo,
+      [key] : value
+    })
+  }
+
+  const userSignUp = () =>{
+      dispatch(signUpRequest(signUpInfo))
+      if(data.isSuccess){
+        navigation.navigate('Login')
+      }
+  }
  
   return (
     <View style={styles.container}>
@@ -21,27 +47,27 @@ function SignUp() {
             <Text style={styles.headerText}> SignUp Here</Text>
          
           <View style={styles.InputContainer}>
-              <Text style={styles.label}>username</Text>
-              <TextInput style={styles.Input} />
+              <Text style={styles.label} >username</Text>
+              <TextInput style={styles.Input} onChangeText={(e)=>userSignUpDetails("username" , e)} />
 
               <Text style={styles.label}>password</Text>
-              <TextInput style={styles.Input} />
+              <TextInput style={styles.Input}  onChangeText={(e)=>userSignUpDetails("password" , e)} />
 
-              <Text style={styles.label}>cinfirm password</Text>
-              <TextInput style={styles.Input} />
+              <Text style={styles.label}>confirm password</Text>
+              <TextInput style={styles.Input}  onChangeText={(e)=>userSignUpDetails("confirmPassword" , e)} />
 
               <Text style={styles.label}>Role</Text>
-              <TextInput style={styles.Input} />
+              <TextInput style={styles.Input}  onChangeText={(e)=>userSignUpDetails("role" , e)} />
 
             <View style={styles.SignInButtonContainer}>
-                <TouchableOpacity style={styles.SignInButton}>
+                <TouchableOpacity style={styles.SignInButton} onPress={userSignUp}>
                   {Userplus}
                     <Text style={styles.SignInButtonText}>SignUp</Text>
                 </TouchableOpacity>
             </View>
 
           </View>
-          <View><TouchableOpacity><Text style={styles.SignupText}>already a user? login instead</Text></TouchableOpacity></View>
+          <View><TouchableOpacity onPress={()=>navigation.navigate('Login')}><Text style={styles.SignupText}>already a user? login instead</Text></TouchableOpacity></View>
 
 
       </View>

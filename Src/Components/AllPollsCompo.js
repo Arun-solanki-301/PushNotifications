@@ -1,123 +1,110 @@
 import React from "react";
-import {View , Text , TouchableOpacity , StyleSheet , TextInput} from 'react-native';
+import { View, Text, TouchableOpacity, StyleSheet, TextInput } from 'react-native';
 import Icon from 'react-native-vector-icons/FontAwesome';
-const TrashIcone = <Icon name="trash" size={25} color="red"  />
+import { useDispatch, useSelector } from "react-redux";
+import { removePollRequest } from "../Redux/Actions/Action";
+import OptionCompo from "./OptionsCompo";
+const TrashIcone = <Icon name="trash" size={25} color="red" />
 const CheckIcon = <Icon name="check-circle" size={25} color="#fff" />
 
-const AllPollsCompo = () =>{
-    return(
+const AllPollsCompo = (props) => {
+    const {data} = props;
+    const dispatch = useDispatch();
+
+    const deletePoll = (id) =>{
+        dispatch(removePollRequest({id : id}))
+    }
+
+
+
+    return (
         <View>
-            <View style={styles.InputContainer}>
+        {data?.map((item)=>{
+            return(
+            <View style={styles.InputContainer} key={item._id}>
                 <View style={styles.QuestionContainer}>
-                    <Text style={styles.questionstyle}>Question here</Text>
-                    <TouchableOpacity>
-                        {TrashIcone}
+                    <Text style={styles.questionstyle}>{item.title}</Text>
+                    <TouchableOpacity onPress={()=>deletePoll(item._id)}>
+                        {/* {TrashIcone} */}
+                        <Text>Delete</Text>
                     </TouchableOpacity>
                 </View>
-                    <View style={styles.OptionContainer}>
-                        <View style={styles.options}>
-                            <TouchableOpacity style={styles.OptionBtn}>
-                                <Text></Text>
-                            </TouchableOpacity>
-                            <Text style={styles.optionsText}>Option 1</Text>
-                        </View>
-
-                        <View style={styles.options}>
-                            <TouchableOpacity style={styles.OptionBtn}>
-                                <Text></Text>
-                            </TouchableOpacity>
-                            <Text style={styles.optionsText}>Option 2</Text>
-                        </View>
-
-                        <View style={styles.options}>
-                            <TouchableOpacity style={styles.OptionBtn}>
-                                <Text></Text>
-                            </TouchableOpacity>
-                            <Text style={styles.optionsText}>Option 3</Text>
-                        </View>
-
-                        <View style={styles.options}>
-                            <TouchableOpacity style={styles.OptionBtn}>
-                                <Text></Text>
-                            </TouchableOpacity>
-                            <Text style={styles.optionsText}>Option 4</Text>
-                        </View>
-                    </View>
-             
-
-            <View style={styles.SignInButtonContainer}>
-                <TouchableOpacity style={styles.SignInButton}>
-                  {CheckIcon}
-                    <Text style={styles.SignInButtonText}>Submit Poll</Text>
-                </TouchableOpacity>
-            </View>  
+                <View style={styles.OptionContainer}>
+                        <OptionCompo item={item.options} />
+                </View>
+                <View style={styles.SignInButtonContainer}>
+                    <TouchableOpacity style={styles.SignInButton}>
+                        {CheckIcon}
+                        <Text style={styles.SignInButtonText}>Submit Poll</Text>
+                    </TouchableOpacity>
+                </View>
             </View>
+            )
+        })}
         </View>
-    )
+        )
 }
 
 export default AllPollsCompo;
 
 const styles = StyleSheet.create({
-    InputContainer : {
-        marginTop : 25,
+    InputContainer: {
+        marginTop: 25,
     },
-    QuestionContainer:{
-        display : "flex",
-        alignItems : "center",
-        justifyContent : "space-between",
-        backgroundColor : "#cccccc",
-        borderRadius : 5,
-        flexDirection : "row",
-        paddingHorizontal : 15,
-        borderRadius : 5,
-        paddingVertical : 10
+    QuestionContainer: {
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "space-between",
+        backgroundColor: "#cccccc",
+        borderRadius: 5,
+        flexDirection: "row",
+        paddingHorizontal: 15,
+        borderRadius: 5,
+        paddingVertical: 10
     },
-    questionstyle :{
-        width : '90%',
-        fontSize : 20,
+    questionstyle: {
+        width: '90%',
+        fontSize: 20,
     },
-    SignInButtonContainer : {
-      display : "flex"
+    SignInButtonContainer: {
+        display: "flex"
     },
-    SignInButton :{
-        backgroundColor : "#454545",
-        padding :15,
-        borderRadius : 5,
-        marginVertical : 15,
-        display : "flex",
-        alignItems : "center",
-        justifyContent : "center",
-        flexDirection : "row",
-  
+    SignInButton: {
+        backgroundColor: "#454545",
+        padding: 15,
+        borderRadius: 5,
+        marginVertical: 15,
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "center",
+        flexDirection: "row",
+
     },
-    SignInButtonText :{
-        color : "#fff",
-        textAlign : "center",
-        fontSize : 16,
-        marginLeft : 10
+    SignInButtonText: {
+        color: "#fff",
+        textAlign: "center",
+        fontSize: 16,
+        marginLeft: 10
     },
-    OptionContainer :{
-        marginVertical : 15
+    OptionContainer: {
+        marginVertical: 15
     },
-    options : {
-        display : "flex",
+    options: {
+        display: "flex",
         // justifyContent : "space-between",
-        alignItems : "center",
-        flexDirection : "row",
-        marginVertical : 5
+        alignItems: "center",
+        flexDirection: "row",
+        marginVertical: 5
     },
-    OptionBtn : {
-        height : 25,
-        width : 25,
-        borderColor : "#cccccc",
-        borderWidth : 1,
+    OptionBtn: {
+        height: 25,
+        width: 25,
+        borderColor: "#cccccc",
+        borderWidth: 1,
     },
-    optionsText : {
-        fontSize : 18,
-        marginLeft : 10
+    optionsText: {
+        fontSize: 18,
+        marginLeft: 10
     }
 
 })
-
-

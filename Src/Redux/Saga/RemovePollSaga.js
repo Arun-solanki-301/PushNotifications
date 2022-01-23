@@ -7,10 +7,10 @@ export function* RemovePollSaga(action) {
   console.log(action)
   const url = `https://secure-refuge-14993.herokuapp.com/delete_poll?id=${action.payload.id}`
   const apiCall = () => {
-    return axios.post(url)
+    return axios.delete(url)
   }
   try {
-    const response = yield call(axios.post, url);
+    const response = yield call(axios.delete, url);
     if (response) {
       console.log(response)
       yield put(removePollSuccess({ response: response }));

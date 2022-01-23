@@ -8,7 +8,6 @@ const InitialState = {
 };
 
 const AllPollReducer = (state = InitialState , action) => {
-    console.log(action)
     switch (action.type) {
       case constant.ALL_POLL_REQUEST:
         return {
