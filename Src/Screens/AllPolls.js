@@ -7,7 +7,6 @@ import { useFocusEffect } from '@react-navigation/native'
 
 const AllPolls = ({navigation}) =>{
    
-   
     useEffect(()=>{
         getAllPollData()
     } , [AllPollData])

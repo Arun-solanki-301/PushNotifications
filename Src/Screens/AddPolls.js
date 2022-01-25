@@ -25,11 +25,9 @@ const AddPolls = ({navigation}) =>{
     const dispatch = useDispatch()
 
     const addNewPoll = ()=>{
+        if(pollInfo.question && pollInfo.option1 && pollInfo.option2 && pollInfo.option3 && pollInfo.option4)
         dispatch(addPollRequest(pollInfo))
     }
-
-
-
 
 
     return(

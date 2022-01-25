@@ -2,7 +2,8 @@ import React, { useEffect } from "react";
 import {View , Image , Text , StyleSheet, ScrollView} from 'react-native'
 import { useDispatch, useSelector } from "react-redux";
 import { profileRequest } from "../Redux/Actions/Action";
-const Profile = () =>{
+
+const Profile = ({navigation}) =>{
 
     const {UserListData} = useSelector(state=>state);
     const dispatch = useDispatch();
@@ -13,6 +14,8 @@ const Profile = () =>{
     const getUserInfo = () =>{
         dispatch(profileRequest())
     }
+
+
 
     return (
         <ScrollView style={styles.container}>

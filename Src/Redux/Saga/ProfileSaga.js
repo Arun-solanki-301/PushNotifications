@@ -3,7 +3,6 @@ import {profileSuccess , profileError} from '../Actions/Action'
 import axios from "axios";
 
 export function* ProfileSaga(action) {
-  console.log(action)
   const url = "https://secure-refuge-14993.herokuapp.com/list_users"
   const apiCall = () => {
     return axios.get(url)
