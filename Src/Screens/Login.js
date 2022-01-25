@@ -1,6 +1,7 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import {
   SafeAreaView,
+  ScrollView,
   StyleSheet,
   Text,
   TextInput,
@@ -10,10 +11,12 @@ import {
 import Icon from 'react-native-vector-icons/FontAwesome';
 import { useDispatch, useSelector } from 'react-redux';
 import { loginRequest } from '../Redux/Actions/Action';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
-const Google = <Icon name="google" size={30} color="#fff" />
+const Google = <Icon name="trash" size={30} color="#fff" />
 const Facebook = <Icon name="facebook" size={30} color="#fff" />
 const signinalt = <Icon name="sign-in" size={25} color="#fff" />
+
 
 
 const Login = ({navigation}) => {
@@ -21,30 +24,60 @@ const Login = ({navigation}) => {
         username : "",
         password : "",
   })
-
-  const getUserInfo = (value , key) =>{
-      setUserInfo({
-        ...userInfo,
-        [key] : value
-      })
-  }
- 
-  const data = useSelector(state => state);
-  const dispatch = useDispatch();
   
-  const SignInUser = (user , pass) => {
-    console.log(user , pass)
-    dispatch(loginRequest({
-      name : user,
-      password : pass,
+  
+  const getUserInfo = (value , key) =>{
+    setUserInfo({
+      ...userInfo,
+      [key] : value
     })
-  );
   }
+  
+  const {LoginData} = useSelector(state => state);
+  
+    useEffect(()=>{
+      const getUserName = async () => {
+        try {
+          const token = await AsyncStorage.getItem('token');
+          if (token !== null) {
+              navigation.navigate("Home")
+          }
+          }catch {
+          console.log(error)
+          }
+      }
+      
+        getUserName();
+
+
+      if(LoginData.status === 200){
+        if(LoginData.data.token){
+          navigation.navigate("Home")
+        }
+      }
+  
+    },[LoginData])
+  
+  const dispatch = useDispatch();
+
+
+  const SignInUser = (user , pass) => {
+    if(userInfo.username && userInfo.password){
+      dispatch(loginRequest({
+        name : user,
+        password : pass,
+      })
+      );
+  }
+}
+
+
 
 
   return (
     <View style={styles.container}>
       <View style={styles.formcontainer}>
+        <ScrollView>
 
             <Text style={styles.headerText}> Sign in With</Text>
           <View style={styles.BtnContainer}>
@@ -53,7 +86,7 @@ const Login = ({navigation}) => {
                   <Text style={styles.fButtonText}>Login with facebook</Text>
               </TouchableOpacity>
 
-              <TouchableOpacity style={styles.GButton}>
+              <TouchableOpacity style={styles.GButton} >
                 {Google}
                   <Text style={styles.fButtonText}>Login with Google</Text>
               </TouchableOpacity>
@@ -74,11 +107,11 @@ const Login = ({navigation}) => {
             </View>
 
           </View>
-          <View><TouchableOpacity onPress={()=>navigation.navigate('SignUp')}><Text style={styles.SignupText}>Not a Mamber ? SignUp Now</Text></TouchableOpacity></View>
+          <View><TouchableOpacity onPress={()=>navigation.navigate('SignUp')}><Text style={styles.SignupText}>Not a Member ? SignUp Now</Text></TouchableOpacity></View>
           <View><Text style={styles.SignupText}>OR</Text></View>
           <View><TouchableOpacity onPress={()=>navigation.navigate('OtpScreen')}><Text style={styles.SignupText}>Sign in With mobile</Text></TouchableOpacity></View>
 
-
+          </ScrollView>
       </View>
     </View>
   );
@@ -95,7 +128,7 @@ const styles = StyleSheet.create({
   },
   formcontainer : {
       backgroundColor : "#fff",
-      height : "80%",
+      height : "90%",
       width : "90%",
       borderRadius : 5,
       paddingHorizontal : 25

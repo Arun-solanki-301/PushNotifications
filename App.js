@@ -1,11 +1,13 @@
 import React, { useEffect } from 'react';
-import messaging from '@react-native-firebase/messaging';
+// import messaging from '@react-native-firebase/messaging';
 import {
   SafeAreaView,
 } from 'react-native';
 import ScreensContainer from './Src/Navigation/ScreensContainer';
 import store from './Src/Redux/store';
 import { Provider } from 'react-redux';
+
+
 
 const App = () => {
 

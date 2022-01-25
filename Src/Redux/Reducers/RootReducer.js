@@ -5,7 +5,7 @@ import AddPollReducer from "./AddPollReducer";
 import AllPollReducer from "./AllPollReducer";
 import RemovePollReducer from "./RemovePollReducer";
 import ProfileReducer from "./ProfileReducer";
-// import SubmitPollReducer from "./SumitPollReducer";
+import SubmitPollReducer from "./SubmitPollReducer";
 
 const rootReducer = combineReducers({
     LoginData : LoginReducer,
@@ -14,7 +14,7 @@ const rootReducer = combineReducers({
     AddPollData : AddPollReducer,
     AllPollData : AllPollReducer,
     RemovePollData : RemovePollReducer,
-    // SubmitPollData : SubmitPollReducer,
+    SubmitPollData : SubmitPollReducer,
     
 })  
 export default rootReducer;

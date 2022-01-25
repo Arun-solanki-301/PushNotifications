@@ -1,9 +1,41 @@
-import React, { useState } from "react"
+import React, { useState , useEffect } from "react"
 import {View , TouchableOpacity , Text , StyleSheet} from 'react-native'
+import Icon from 'react-native-vector-icons/FontAwesome';
+import { useDispatch } from "react-redux";
+import AsyncStorage from '@react-native-async-storage/async-storage';
+import { submitPollRequest } from "../Redux/Actions/Action";
+
+const CheckIcon = <Icon name="check-circle" size={25} color="#fff" />
 
 const OptionCompo = (props) => {
-    const [selectedOption , setSelectedOption] = useState(false)
-    const {item} = props
+    const [selectedOption , setSelectedOption] = useState("")
+    const [asyncToken , setAsyncToken] = useState("")
+    const {item , itemId} = props
+
+    useEffect(()=>{
+        const getUserName = async () => {
+          try {
+            const token = await AsyncStorage.getItem('token');
+            setAsyncToken(token)
+            }catch {
+            console.log(error)
+            }
+        }
+          getUserName();
+    
+      },[])
+     
+    const dispatch = useDispatch()
+
+
+    const submitPoll = (id)=>{
+        dispatch(submitPollRequest({
+            option : selectedOption,
+            id : id,
+            token :  asyncToken
+        }))
+    }
+
     return (
         <View>
         {item?.map((elem , index)=>{
@@ -21,6 +53,12 @@ const OptionCompo = (props) => {
             )
         })
         }
+        <View style={styles.SignInButtonContainer}>
+                    <TouchableOpacity style={styles.SignInButton} disabled={!selectedOption} id={itemId} onPress={()=>submitPoll(itemId)}>
+                        {CheckIcon}
+                        <Text style={styles.SignInButtonText} onPress={submitPoll}>Submit Poll</Text>
+                    </TouchableOpacity>
+                </View>
         </View>
 
 

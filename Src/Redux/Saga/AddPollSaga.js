@@ -4,7 +4,7 @@ import axios from "axios";
 
 export function* AddPollSaga(action) {
   console.log(action)
-  const url = `https://secure-refuge-14993.herokuapp.com/add_poll?title=${action.payload.question}%20polll&options=${action.payload.option1}____${action.payload.option2}____${action.payload.option3}____${action.payload.option4}`
+  const url = `https://secure-refuge-14993.herokuapp.com/add_poll?title=${action.payload.question}%20&options=${action.payload.option1}____${action.payload.option2}____${action.payload.option3}____${action.payload.option4}`
   const apiCall = () => {
     return axios.post(url)
   }

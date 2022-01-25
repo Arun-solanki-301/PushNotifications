@@ -6,7 +6,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { addPollRequest } from '../Redux/Actions/Action';
 
 const PollIcon = <Icon name="plus-circle" size={25} color="#fff" />
-const AddPolls = () =>{
+const AddPolls = ({navigation}) =>{
     const [pollInfo , setPollInfo] = useState({
         question : "",
         option1 : "",

@@ -6,7 +6,9 @@ import {
   TextInput,
   TouchableOpacity,
   View,
+  ScrollView
 } from 'react-native';
+
 
 
 const OtpScreen = ({navigation}) => {
@@ -19,6 +21,7 @@ const OtpScreen = ({navigation}) => {
   return (
     <View style={styles.container}>
       <View style={styles.formcontainer}>
+        <ScrollView>
         <Text style={styles.headerText} > Sign in Mobile</Text>
         {otpGenrate ? <View style={styles.InputContainer}>
           <TextInput style={styles.Input} placeholder='Mobile number' keyboardType='numeric' maxLength={10} />
@@ -32,14 +35,15 @@ const OtpScreen = ({navigation}) => {
           <View style={styles.InputContainer}>
             <TextInput style={styles.Input} placeholder='Enter OTP Here' keyboardType='numeric' maxLength={4} />
             <View style={styles.SignInButtonContainer}>
-              <TouchableOpacity style={styles.SignInButton}>
+              <TouchableOpacity style={styles.SignInButton}  onPress={()=>navigation.navigate('Home')}>
                 <Text style={styles.SignInButtonText}>Submit</Text>
               </TouchableOpacity>
             </View>
           </View>
         }
 
-        <View><TouchableOpacity onPress={()=>navigation.navigate('SignUp')}><Text style={styles.SignupText}>Not a Mamber ? SignUp Now</Text></TouchableOpacity></View>
+        <View><TouchableOpacity onPress={()=>navigation.navigate('SignUp')}><Text style={styles.SignupText}>Not a Member ? SignUp Now</Text></TouchableOpacity></View>
+        </ScrollView>
 
       </View>
     </View>

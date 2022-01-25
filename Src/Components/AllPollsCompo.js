@@ -1,9 +1,11 @@
-import React from "react";
+import React, { useState } from "react";
 import { View, Text, TouchableOpacity, StyleSheet, TextInput } from 'react-native';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import { useDispatch, useSelector } from "react-redux";
 import { removePollRequest } from "../Redux/Actions/Action";
 import OptionCompo from "./OptionsCompo";
+
+
 const TrashIcone = <Icon name="trash" size={25} color="red" />
 const CheckIcon = <Icon name="check-circle" size={25} color="#fff" />
 
@@ -30,13 +32,7 @@ const AllPollsCompo = (props) => {
                     </TouchableOpacity>
                 </View>
                 <View style={styles.OptionContainer}>
-                        <OptionCompo item={item.options} />
-                </View>
-                <View style={styles.SignInButtonContainer}>
-                    <TouchableOpacity style={styles.SignInButton}>
-                        {CheckIcon}
-                        <Text style={styles.SignInButtonText}>Submit Poll</Text>
-                    </TouchableOpacity>
+                        <OptionCompo item={item.options} itemId = {item._id} />
                 </View>
             </View>
             )

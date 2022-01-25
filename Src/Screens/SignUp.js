@@ -1,6 +1,7 @@
 import React, {useState} from 'react';
 import {
   SafeAreaView,
+  ScrollView,
   StyleSheet,
   Text,
   TextInput,
@@ -46,6 +47,7 @@ const SignUp = ({navigation}) => {
 
             <Text style={styles.headerText}> SignUp Here</Text>
          
+          <ScrollView height={"100%"}>
           <View style={styles.InputContainer}>
               <Text style={styles.label} >username</Text>
               <TextInput style={styles.Input} onChangeText={(e)=>userSignUpDetails("username" , e)} />
@@ -70,6 +72,7 @@ const SignUp = ({navigation}) => {
           <View><TouchableOpacity onPress={()=>navigation.navigate('Login')}><Text style={styles.SignupText}>already a user? login instead</Text></TouchableOpacity></View>
 
 
+        </ScrollView>
       </View>
     </View>
   );
@@ -86,7 +89,7 @@ const styles = StyleSheet.create({
   },
   formcontainer : {
       backgroundColor : "#fff",
-      height : "85%",
+      height : "90%",
       width : "90%",
       borderRadius : 5,
       paddingHorizontal : 25
@@ -100,7 +103,7 @@ const styles = StyleSheet.create({
   headerText :{
       textAlign : "center",
       fontSize : 30,
-      marginVertical : 25
+      marginVertical : 15
   },
   InputContainer : {
       marginTop : 10,

@@ -6,7 +6,7 @@ import { AddPollSaga } from './AddPollSaga';
 import { AllPollSaga } from './AllPollSaga';
 import { RemovePollSaga } from './RemovePollSaga';
 import { ProfileSaga } from './ProfileSaga';
-// import {SubmitPollSaga} from './SubmitPollSaga'
+import {SubmitPollSaga} from './SubmitPollSaga'
 
 
 
@@ -29,12 +29,12 @@ function* AllPollRootSaga() {
 function* RemoveRootSaga() {
   yield takeLatest(constant.REMOVE_POLL_REQUEST, RemovePollSaga);
 }
-// function* SubmitPollRootSaga() {
-//   yield takeLatest(constant.SUBMIT_POLL_REQUEST, SubmitPollSaga);
-// }
+function* SubmitPollRootSaga() {
+  yield takeLatest(constant.SUBMIT_POLL_REQUEST, SubmitPollSaga);
+}
 
 
 
 export default function* rootSaga() {
-  yield all([fork(LoginRootSaga) , fork(signUpRootSaga), fork(ProfileRootSaga), fork(AddPollRootSaga) , fork(AllPollRootSaga), fork(RemoveRootSaga)]);
+  yield all([fork(LoginRootSaga) , fork(signUpRootSaga), fork(ProfileRootSaga), fork(AddPollRootSaga) , fork(AllPollRootSaga), fork(RemoveRootSaga), fork(SubmitPollRootSaga)]);
 }

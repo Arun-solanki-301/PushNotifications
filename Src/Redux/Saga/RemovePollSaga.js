@@ -1,6 +1,6 @@
 import { put, call } from "@redux-saga/core/effects";
 // import { loginSuccess , loginError } from "../Actions/actions";
-import { removePollSuccess , removePollError } from "../Actions/Action";
+import { removePollSuccess , removePollError, allPollRequest } from "../Actions/Action";
 import axios from "axios";
 
 export function* RemovePollSaga(action) {
@@ -14,6 +14,7 @@ export function* RemovePollSaga(action) {
     if (response) {
       console.log(response)
       yield put(removePollSuccess({ response: response }));
+      yield put (allPollRequest())
     } else {
       yield put(removePollError({ error: "Invalid  details" }));
     }
