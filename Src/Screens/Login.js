@@ -11,11 +11,13 @@ import {
 import Icon from 'react-native-vector-icons/FontAwesome';
 import { useDispatch, useSelector } from 'react-redux';
 import { loginRequest } from '../Redux/Actions/Action';
+import { GoogleSignin, statusCodes } from '@react-native-google-signin/google-signin';
+import auth from '@react-native-firebase/auth'
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
-const Google = <Icon name="trash" size={30} color="#fff" />
-const Facebook = <Icon name="facebook" size={30} color="#fff" />
-const signinalt = <Icon name="sign-in" size={25} color="#fff" />
+const Google = <Icon name="google" size={25} color="#fff" />
+const Facebook = <Icon name="facebook" size={25} color="#fff" />
+const signinalt = <Icon name="sign-in" size={20} color="#fff" />
 
 
 
@@ -36,6 +38,11 @@ const Login = ({navigation}) => {
   const {LoginData} = useSelector(state => state);
   
     useEffect(()=>{
+
+      GoogleSignin.configure({
+        webClientId:"555087954990-799d57i8j50n9n8qigmp08nhn597rrac.apps.googleusercontent.com"
+      })
+      
       const getUserName = async () => {
         try {
           const token = await AsyncStorage.getItem('token');
@@ -58,9 +65,12 @@ const Login = ({navigation}) => {
   
     },[LoginData])
   
+   
+    
+
+
+
   const dispatch = useDispatch();
-
-
   const SignInUser = (user , pass) => {
     if(userInfo.username && userInfo.password){
       dispatch(loginRequest({
@@ -71,6 +81,27 @@ const Login = ({navigation}) => {
   }
 }
 
+
+// Somewhere in your code
+const _googleSignIn = async () => {
+  try {
+    await GoogleSignin.hasPlayServices();
+    const userInfo = await GoogleSignin.signIn();
+    console.log(userInfo)
+    // this.setState({ userInfo });
+  } catch (error) {
+    // if (error.code === statusCodes.SIGN_IN_CANCELLED) {
+    //   // user cancelled the login flow
+    // } else if (error.code === statusCodes.IN_PROGRESS) {
+    //   // operation (e.g. sign in) is in progress already
+    // } else if (error.code === statusCodes.PLAY_SERVICES_NOT_AVAILABLE) {
+    //   // play services not available or outdated
+    // } else {
+    //   // some other error happened
+    // }
+    console.log(error)
+  }
+};
 
 
 
@@ -86,7 +117,7 @@ const Login = ({navigation}) => {
                   <Text style={styles.fButtonText}>Login with facebook</Text>
               </TouchableOpacity>
 
-              <TouchableOpacity style={styles.GButton} >
+              <TouchableOpacity style={styles.GButton} onPress={_googleSignIn} >
                 {Google}
                   <Text style={styles.fButtonText}>Login with Google</Text>
               </TouchableOpacity>
@@ -164,7 +195,8 @@ const styles = StyleSheet.create({
   fButtonText : {
       color : '#fff',
       textAlign : "center",
-      fontSize : 14
+      fontSize : 16,
+      marginLeft :10
     
   },
   headerText :{

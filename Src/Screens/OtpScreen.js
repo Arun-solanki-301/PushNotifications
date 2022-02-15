@@ -8,15 +8,41 @@ import {
   View,
   ScrollView
 } from 'react-native';
+// import auth from '@react-native-firebase/auth';
+
 
 
 
 const OtpScreen = ({navigation}) => {
   const [otpGenrate, setOptGenrate] = useState(true)
+  const [confirm, setConfirm] = useState(null);
+  const [phoneNumber , setPhoneNumber] = useState("")
 
   const Genrate = () => {
     setOptGenrate(false)
   }
+
+
+//   const genrateOtp = () => {
+//        const  phone = "+91" + phoneNumber
+//     if(phone){
+//         signInWithPhoneNumber(phone)
+//     }else{
+//         console.log("inncorrect number")
+//     }
+// }
+
+// async function signInWithPhoneNumber(phone) {
+//   try {
+//       const confirmation = await auth().signInWithPhoneNumber(phone);
+//       setConfirm(confirmation);
+//       setOptGenrate(false)
+//       console.log(confirmation)
+//     } catch (error) {
+//       error
+//       console.log(error)
+//     }
+// }
 
   return (
     <View style={styles.container}>
@@ -24,9 +50,9 @@ const OtpScreen = ({navigation}) => {
         <ScrollView>
         <Text style={styles.headerText} > Sign in Mobile</Text>
         {otpGenrate ? <View style={styles.InputContainer}>
-          <TextInput style={styles.Input} placeholder='Mobile number' keyboardType='numeric' maxLength={10} />
+          <TextInput style={styles.Input} placeholder='Mobile number' keyboardType='numeric' maxLength={10} value={phoneNumber} onChangeText={(e)=>setPhoneNumber(e)} />
           <View style={styles.SignInButtonContainer}>
-            <TouchableOpacity style={styles.SignInButton} onPress={Genrate}>
+            <TouchableOpacity style={styles.SignInButton} onPress={genrateOtp}>
               <Text style={styles.SignInButtonText}>Genrate Otp</Text>
             </TouchableOpacity>
           </View>

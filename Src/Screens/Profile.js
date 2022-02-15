@@ -15,8 +15,6 @@ const Profile = ({navigation}) =>{
         dispatch(profileRequest())
     }
 
-
-
     return (
         <ScrollView style={styles.container}>
             <Text style={styles.headerText}>User info list</Text>

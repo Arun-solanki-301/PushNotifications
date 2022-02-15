@@ -27,8 +27,7 @@ const AllPollsCompo = (props) => {
                 <View style={styles.QuestionContainer}>
                     <Text style={styles.questionstyle}>{item.title}</Text>
                     <TouchableOpacity onPress={()=>deletePoll(item._id)}>
-                        {/* {TrashIcone} */}
-                        <Text>Delete</Text>
+                        {TrashIcone}
                     </TouchableOpacity>
                 </View>
                 <View style={styles.OptionContainer}>

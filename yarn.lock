@@ -787,7 +787,7 @@
     "minimatch" "^3.0.4"
     "strip-json-comments" "^3.1.1"
 
-"@expo/config-plugins@^4.0.15":
+"@expo/config-plugins@^4.0.16":
   "integrity" "sha512-UTyE5JTBatMSwoOZCtX0u2H3zkp/ybMftc1228ARMop35Dbq+sYO11Ym3MrY5RPh8PYPofokDSOvoUq1jjORXw=="
   "resolved" "https://registry.npmjs.org/@expo/config-plugins/-/config-plugins-4.0.16.tgz"
   "version" "4.0.16"
@@ -1255,19 +1255,29 @@
   "resolved" "https://registry.npmjs.org/@react-native-community/eslint-plugin/-/eslint-plugin-1.1.0.tgz"
   "version" "1.1.0"
 
-"@react-native-firebase/app@^14.2.3", "@react-native-firebase/app@14.2.3":
-  "integrity" "sha512-PSAYqQGo+/k2KgqOk3sLu0lRxvymvB7Ps4qX2A5JyaYWM419ofZtmYn8glwOB0qWaaMiF+dsh9gAzikxTD3DkA=="
-  "resolved" "https://registry.npmjs.org/@react-native-firebase/app/-/app-14.2.3.tgz"
-  "version" "14.2.3"
+"@react-native-firebase/app@^14.2.4", "@react-native-firebase/app@14.2.3", "@react-native-firebase/app@14.2.4":
+  "integrity" "sha512-8Tm1KFmvLWCgWLQGEmbI5RE1QrmmmzM7cZUKdIl4moZ5Oy1EjGPLghtsX+2i9kCYK4EEMkobb5mrXb/H5PUrTQ=="
+  "resolved" "https://registry.npmjs.org/@react-native-firebase/app/-/app-14.2.4.tgz"
+  "version" "14.2.4"
   dependencies:
-    "@expo/config-plugins" "^4.0.15"
+    "@expo/config-plugins" "^4.0.16"
     "opencollective-postinstall" "^2.0.1"
     "superstruct" "^0.6.2"
+
+"@react-native-firebase/auth@^14.2.4":
+  "integrity" "sha512-uITq4zr2AiNkvqaKKrZDbr8xSvtGcmVHUMYZek/xsOlF8MHvgB6OVclRzmbTZii9uEyBFq/sKd/na79S+Uzblw=="
+  "resolved" "https://registry.npmjs.org/@react-native-firebase/auth/-/auth-14.2.4.tgz"
+  "version" "14.2.4"
 
 "@react-native-firebase/messaging@^14.2.3":
   "integrity" "sha512-/d5ZGCWvIFJ8HS7gzpLUYIXevOGSrH6NaHaQJSVl0pus19E9aC9WMb2GJANtCGXD+/XmXz2c7amUTNgrteCgVQ=="
   "resolved" "https://registry.npmjs.org/@react-native-firebase/messaging/-/messaging-14.2.3.tgz"
   "version" "14.2.3"
+
+"@react-native-google-signin/google-signin@^7.0.4":
+  "integrity" "sha512-N5uVDlTp/mgpa5gFr6VIr8pldt68jlmHOlqcTSnSwBuZXusXMiK53DCIOWuYk4OJ1rlb8Esa9J4FJwUB0psU9Q=="
+  "resolved" "https://registry.npmjs.org/@react-native-google-signin/google-signin/-/google-signin-7.0.4.tgz"
+  "version" "7.0.4"
 
 "@react-native-masked-view/masked-view@^0.2.6":
   "integrity" "sha512-303CxmetUmgiX9NSUxatZkNh9qTYYdiM8xkGf9I3Uj20U3eGY3M78ljeNQ4UVCJA+FNGS5nC1dtS9GjIqvB4dg=="
@@ -5982,6 +5992,16 @@
     "lodash" "^4.17.21"
     "prop-types" "^15.7.2"
 
+"react-native-image-crop-picker@^0.37.2":
+  "integrity" "sha512-YwZXW21Km8+3tSt0smTaLVgY4398c0/OJcpcH6EP0JDOt1BNNxl/R8m6qdvnwdXdIoa0CCnMVW6TL9IN5ia9OA=="
+  "resolved" "https://registry.npmjs.org/react-native-image-crop-picker/-/react-native-image-crop-picker-0.37.2.tgz"
+  "version" "0.37.2"
+
+"react-native-image-picker@^4.7.3":
+  "integrity" "sha512-eRKm4wlsmZHmsWFyv77kYc2F+ZyEVqe0m7mqhsMzWk6TQT4FBDtEDxmRDDFq+ivCu/1QD+EPhmYcAIpeGr7Ekg=="
+  "resolved" "https://registry.npmjs.org/react-native-image-picker/-/react-native-image-picker-4.7.3.tgz"
+  "version" "4.7.3"
+
 "react-native-safe-area-context@^3.3.2", "react-native-safe-area-context@>= 3.0.0":
   "integrity" "sha512-yOwiiPJ1rk+/nfK13eafbpW6sKW0jOnsRem2C1LPJjM3tfTof6hlvV5eWHATye3XOpu2cJ7N+HdkUvUDGwFD2Q=="
   "resolved" "https://registry.npmjs.org/react-native-safe-area-context/-/react-native-safe-area-context-3.3.2.tgz"
@@ -6009,7 +6029,7 @@
     "prop-types" "^15.7.2"
     "yargs" "^16.1.1"
 
-"react-native@*", "react-native@^0.0.0-0 || 0.60 - 0.67 || 1000.0.0", "react-native@^0.67.1", "react-native@>=0.57":
+"react-native@*", "react-native@^0.0.0-0 || 0.60 - 0.67 || 1000.0.0", "react-native@^0.67.1", "react-native@>=0.40.0", "react-native@>=0.57":
   "integrity" "sha512-doKN9qhtjilF+6p8603OVzqGKL4fq8EDAH5u00KPmZbL5ampHDQX9y8/uwlUvJggvHwZXlnvhW63u8Y1LA8rxw=="
   "resolved" "https://registry.npmjs.org/react-native/-/react-native-0.67.1.tgz"
   "version" "0.67.1"

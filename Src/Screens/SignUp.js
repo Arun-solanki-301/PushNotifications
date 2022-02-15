@@ -11,8 +11,10 @@ import {
 import Icon from 'react-native-vector-icons/FontAwesome';
 import { useDispatch, useSelector } from 'react-redux';
 import { signUpRequest } from '../Redux/Actions/Action';
+import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
 
-const Userplus = <Icon name="user-plus" size={25} color="#fff" />
+
+const Userplus = <FontAwesome5 name="user-plus" size={25} color="#fff" />
 
 
 const SignUp = ({navigation}) => {
